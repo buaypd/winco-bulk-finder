@@ -1,24 +1,10 @@
-import express from 'express';
+import app from "./app.js";
+import dotenv from 'dotenv';
 
-// configure Express.js app
-const app = express();
+// read environment variables
+dotenv.config();
 
-//static directories
-app.use(express.static('public'));
-app.use(express.json());
-
-// What does this do??
-// app.use(express.urlencoded({ extended: true }));
-
-//view engine
-app.set("view engine", "ejs");
-app.set("views", "src/views");
-
-
-// Front-End Routes
-//app.use("/");
-
-// Back-End Routes
-//app.use("/");
-
-export default app;
+const port = process.env.PORT;
+app.listen(port, () => {
+  console.log(`Server started on http://localhost:${port}`);
+})
