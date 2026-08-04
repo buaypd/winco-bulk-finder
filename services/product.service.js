@@ -1,4 +1,4 @@
-export const items = [
+const products = [
   {
     "id": 1,
     "name": "Rolled Oats",
@@ -71,13 +71,19 @@ export const items = [
   }
 ];
 
-export const getAllItems = () =>{
-  return items;
+export const getAllProducts = () =>{
+  return products;
 }
 
-export const getItemById = (id) => {
-  return items.find(items => items.id === id);
+export const getProductById = (id) => {
+  return products.find(product => product.id ===id);
 }
-export const createItem = (newItem) => {
-  items.push(newItems);
+
+export const createProduct = (newProduct) => {
+  const productIds = products.map(product => product.id);
+const maxId = Math.max(...productIds);
+const nextId = maxId + 1;
+newProduct.id = nextId;
+products.push(newProduct);
+  return newProduct;
 }
