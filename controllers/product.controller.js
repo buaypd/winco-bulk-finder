@@ -1,4 +1,4 @@
-import { getAllProducts, getProductById } from "../services/product.service.js";
+import { getAllProducts, getProductById, createProduct } from "../services/product.service.js";
 
 export const getAllProductsHandler = (req, res) => {
   let productArray = getAllProducts();
@@ -16,4 +16,9 @@ export const getProductByIdHandler = (req, res) => {
       message: `Product not found with id ${id}`
     });
   }
+}
+
+export const createProductHandler = (req, res) => {
+const newProduct = createProduct(req.body);
+res.status(201).json(newProduct);
 }
