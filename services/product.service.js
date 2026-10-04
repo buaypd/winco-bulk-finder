@@ -71,19 +71,59 @@ const products = [
   }
 ];
 
-export const getAllProducts = () =>{
+
+//GET
+
+export const getAllProducts = () => {
   return products;
+};
+export const getProductById = (id) => { 
+ return products.find(product => product.id === Number(id));
 }
 
-export const getProductById = (id) => {
-  return products.find(product => product.id ===id);
-}
-
+//POST
 export const createProduct = (newProduct) => {
   const productIds = products.map(product => product.id);
-const maxId = Math.max(...productIds);
-const nextId = maxId + 1;
-newProduct.id = nextId;
-products.push(newProduct);
+  const maxId = Math.max(...productIds);
+  const nextId = maxId + 1;
+  newProduct.id = nextId;
+  products.push(newProduct);
   return newProduct;
 }
+
+
+//PATCH
+export const updateProduct = (id, updatedProduct) => {
+  
+  const product = products.find(product => product.id === Number(id));
+  if (!product) {
+    return null;
+}
+  Object.assign(product, updatedProduct);
+  return product;
+}
+
+//PUT
+export const replaceProduct = (id, replacedProduct) => {
+
+    const index = products.findIndex(
+      product => product.id ===  Number(id)
+    );
+
+    if (index === -1) {
+        return null;
+    } 
+    
+    replacedProduct.id = Number(id);
+    products[index] = replacedProduct;
+    return replacedProduct;
+
+}
+
+// DELETE
+export const deleteProduct = (id) => {
+  const index = products.findIndex(p => p.id === Number(id));
+  if (index !== -1) products.splice(index, 1);
+  return products;
+};
+
