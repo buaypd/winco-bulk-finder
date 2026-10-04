@@ -123,7 +123,8 @@ export const replaceProduct = (id, replacedProduct) => {
 // DELETE
 export const deleteProduct = (id) => {
   const index = products.findIndex(p => p.id === Number(id));
-  if (index !== -1) products.splice(index, 1);
-  return products;
+  if(index === -1)return null;
+  const [deletedProduct] = products.splice(index, 1);
+  return deletedProduct;
 };
 

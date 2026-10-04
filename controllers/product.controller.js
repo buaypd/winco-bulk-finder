@@ -1,4 +1,4 @@
-import { getAllProducts, getProductById, createProduct, updateProduct } from "../services/product.service.js";
+import {  getAllProducts, getProductById ,createProduct, updateProduct, replaceProduct, deleteProduct } from "../services/product.service.js";
 
 export const getAllProductsHandler = (req, res) => {
   let productArray = getAllProducts();
