@@ -1,36 +1,47 @@
-import { useState, useEffect } from 'react'
-import './App.css'
+import { useState, useEffect } from "react";
+import ProductCard from "./components/ProductCard";
+import "./App.css";
+import ProductList from "./components/ProductList";
 
 function App() {
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-const controller = new AbortController();
-async function LoadProducts() {
-  try {
-    const response = await fetch('/products', {
-      signal : controller.signal,
-    });
-    if (!response.ok) {
-      throw new Error(`Failed to load products: ${response.status}`);
-    }
-    const data = await response.json();
-    
-  
-  }catch (error) {
-  if (error.name !== 'AbortError') {
-    console.error('Error loading products:', error);
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("/products");
+        if (!response.ok) {
+          throw new Error("Failed to fetch productts");
+        }
+        const data = await response.json();
+        setProducts(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (error) {
+    return <div>Failed to Load data</div>;
   }
-}
-finally {
-  console.log('Product fetch attempt finished');
-}
-}
-LoadProducts();
-})
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  
   return (
-<h1>Hi Winco Finder</h1>
-  )
+    <div>
+      <h1>Hi Winco Finder</h1>
+      <ProductList products={products} />
+    </div>
+  );
 }
 
-export default App
+export default App;
