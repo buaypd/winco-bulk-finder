@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ProductCard from "./components/ProductCard";
 import "./App.css";
 import ProductList from "./components/ProductList";
+import Search from "./components/Search";
 
 function App() {
   const [error, setError] = useState();
@@ -35,11 +36,13 @@ function App() {
   if (loading) {
     return <div>Loading...</div>;
   }
-  
+
   return (
     <div>
       <h1>Hi Winco Finder</h1>
+      <Search value={query} onQueryChange={setQuery} />
       <ProductList products={products} />
+      p
     </div>
   );
 }
