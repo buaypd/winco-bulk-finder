@@ -6,8 +6,9 @@ import Search from "./components/Search";
 
 function App() {
   const [error, setError] = useState();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
+  const [query, setQuery] = useState("")
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -29,20 +30,33 @@ function App() {
     fetchProducts();
   }, []);
 
+  // console.log(query);
+
+  // filtering products
+  // derived value
+  const filteredProducts = query ?
+   products.filter(el => el.name.toLowerCase().includes(query.toLowerCase())) : products;
+
+     function renderResults(){
+    if(loading){
+  return <div>Loading</div>;
+    }
   if (error) {
     return <div>Failed to Load data</div>;
+    }
+  if (filteredProducts.length === 0) {
+    return <div>No Products Match</div>
   }
-
-  if (loading) {
-    return <div>Loading...</div>;
+    return <ProductList products={filteredProducts} />
   }
 
   return (
     <div>
       <h1>Hi Winco Finder</h1>
+
       <Search value={query} onQueryChange={setQuery} />
-      <ProductList products={products} />
-      p
+      {renderResults()}
+
     </div>
   );
 }
