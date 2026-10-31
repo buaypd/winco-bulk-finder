@@ -3,12 +3,15 @@ import ProductCard from "./components/ProductCard";
 import "./App.css";
 import ProductList from "./components/ProductList";
 import Search from "./components/Search";
+import ProductInfo from "./pages/ProductInfo";
 
 function App() {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [query, setQuery] = useState("")
+  const [selectedId, setSelectedId] = useState(null);
+
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -34,8 +37,12 @@ function App() {
 
   // filtering products
   // derived value
+  // console.log(selectedId);
   const filteredProducts = query ?
    products.filter(el => el.name.toLowerCase().includes(query.toLowerCase())) : products;
+
+  const selectedProduct = products.find((product) => product.id === selectedId);
+console.log(selectedProduct);
 
      function renderResults(){
     if(loading){
@@ -47,7 +54,7 @@ function App() {
   if (filteredProducts.length === 0) {
     return <div>No Products Match</div>
   }
-    return <ProductList products={filteredProducts} />
+    return <ProductList products={filteredProducts} onSelect={setSelectedId}/>
   }
 
   return (
@@ -55,7 +62,8 @@ function App() {
       <h1>Hi Winco Finder</h1>
 
       <Search value={query} onQueryChange={setQuery} />
-      {renderResults()}
+      {selectedProduct && <ProductInfo product={selectedProduct} />}
+       {renderResults()}
 
     </div>
   );

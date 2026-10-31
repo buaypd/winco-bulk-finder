@@ -1,11 +1,11 @@
 import ProductCard from "./ProductCard";
 
-export default function ProductList({ products }) {
+export default function ProductList({ products, onSelect }) {
   return (
-    <div>
+    <ul>
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard key={product.id} product={product} onSelect={onSelect} />
       ))}
-    </div>
+    </ul>
   );
 }
