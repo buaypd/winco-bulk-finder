@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router";
-export default function ProductCard({product, onSelect}) {
+export default function ProductCard({product}) {
   const navigate = useNavigate();
   return (
     <div className="product">
       <h1 className="product-name">{product.name}</h1>
       <p>{product.pricePerPound}</p>
       <button 
-      onClick={() => {onSelect(product.id);
-        navigate(`/products/${product.id}`);
-      }}
+      onClick={() => 
+        navigate(`/product/${product.id}`)
+      }
         >
           Product
         </button>

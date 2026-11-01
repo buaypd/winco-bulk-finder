@@ -10,7 +10,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [query, setQuery] = useState("")
-  const [selectedId, setSelectedId] = useState(null);
+
 
 
   useEffect(() => {
@@ -41,8 +41,6 @@ function App() {
   const filteredProducts = query ?
    products.filter(el => el.name.toLowerCase().includes(query.toLowerCase())) : products;
 
-  const selectedProduct = products.find((product) => product.id === selectedId);
-console.log(selectedProduct);
 
      function renderResults(){
     if(loading){
@@ -54,7 +52,7 @@ console.log(selectedProduct);
   if (filteredProducts.length === 0) {
     return <div>No Products Match</div>
   }
-    return <ProductList products={filteredProducts} onSelect={setSelectedId}/>
+    return <ProductList products={filteredProducts} />
   }
 
   return (
@@ -67,11 +65,10 @@ console.log(selectedProduct);
        {renderResults()}
         </>
         }/>
-        <Route path="/products/:id" element={
-          <>
-          {selectedProduct && <ProductInfo product={selectedProduct} />}
-        </>
-      }/>
+        <Route
+      path="/product/:id"
+      element={<ProductInfo products={products} loading={loading} error={error} />}
+      />
         
       </Routes>
        
