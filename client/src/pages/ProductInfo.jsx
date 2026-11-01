@@ -15,6 +15,9 @@ if (!product) return <p>Product not found.</p>;
     <p>{product.category}</p>
     <p>{product.section}</p>
     <p>{product.pricePerPound}</p>
+    {product.position === null && (
+    <p>Location not yet mapped.</p>
+    )}
     <BulkMap section={product.section} position={product.position}/>
     
     </>
