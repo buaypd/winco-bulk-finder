@@ -167,7 +167,7 @@
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -4.5px;
     border: 5px solid transparent;
@@ -181,4 +181,39 @@
     right: 0;
     border-right-color: var(--border);
   }
+}
+.search {
+  position: relative;
+  width: min(90%, 400px);
+  margin: 0 auto;
+}
+
+.search-input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 48px 12px 12px;
+  font: inherit;
+  color: var(--text-h);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.search button {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-h);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.search button:focus-visible {
+  outline: 2px solid var(--accent);
 }
