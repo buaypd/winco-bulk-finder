@@ -1,37 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 import ProductList from "./components/ProductList";
 import Search from "./components/Search";
 import ProductInfo from "./pages/ProductInfo";
 import { Routes, Route } from "react-router";
+import { useFetch } from "./hooks/hooks";
 
 function App() {
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState([]);
+const { data: products, loading, error } = useFetch("/products", []);
   const [query, setQuery] = useState("")
 
-
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch("/products");
-        if (!response.ok) {
-          throw new Error("Failed to fetch productts");
-        }
-        const data = await response.json();
-        setProducts(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
 
   // console.log(query);
 
