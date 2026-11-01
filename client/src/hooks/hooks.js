@@ -6,21 +6,32 @@ export function useFetch(url, initialData) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const controller = new AbortController();
     const load = async () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          signal: controller.signal
+        });
         if (!response.ok) throw new Error("Failed to fetch data");
         const json = await response.json();
         setData(json);
       } catch (err) {
-        setError(err.message);
+        if (err.name !== 'AbortError') {
+          setError(err.message);
+        }
       } finally {
-        setLoading(false);
+        if (!controller.signal.aborted) {
+          setLoading(false);
+        }
       }
     }
     load();
+
+    return () => {
+      controller.abort();
+    };
   }, [url])
   return { data, setData, loading, error }
 }
