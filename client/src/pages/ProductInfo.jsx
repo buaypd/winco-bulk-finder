@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router"
+import BulkMap from "./BulkMap";
 export default function ProductInfo({ products, loading, error }){
   const { id } = useParams();
   const product = products.find(product => product.id === Number(id));
@@ -14,6 +15,7 @@ if (!product) return <p>Product not found.</p>;
     <p>{product.category}</p>
     <p>{product.section}</p>
     <p>{product.pricePerPound}</p>
+    <BulkMap section={product.section}/>
     
     </>
   )
