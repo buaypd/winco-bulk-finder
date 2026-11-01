@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import ProductCard from "./components/ProductCard";
 import "./App.css";
 import ProductList from "./components/ProductList";
 import Search from "./components/Search";
 import ProductInfo from "./pages/ProductInfo";
+import { Routes, Route } from "react-router";
 
 function App() {
   const [error, setError] = useState();
@@ -60,10 +60,21 @@ console.log(selectedProduct);
   return (
     <div>
       <h1>Hi Winco Finder</h1>
-
-      <Search value={query} onQueryChange={setQuery} />
-      {selectedProduct && <ProductInfo product={selectedProduct} />}
+      <Routes>
+      <Route path="/" element={
+        <>
+        <Search value={query} onQueryChange={setQuery} />
        {renderResults()}
+        </>
+        }/>
+        <Route path="/products/:id" element={
+          <>
+          {selectedProduct && <ProductInfo product={selectedProduct} />}
+        </>
+      }/>
+        
+      </Routes>
+       
 
     </div>
   );
