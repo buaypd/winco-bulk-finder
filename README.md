@@ -124,7 +124,8 @@ npm run build
 - Verify product locations and prices in the store.
 - Map short-end displays and improve map readability on smaller screens.
 - Add persistent storage and individual product images.
+- Add an authenticated admin dashboard for creating, editing, and deleting products, updating prices, and correcting map locations.
 
 This is an independent personal portfolio project, not an official WinCo Foods application.
 
-- Add an authenticated admin dashboard for creating, editing, and deleting products, updating prices, and correcting map locations.
+
