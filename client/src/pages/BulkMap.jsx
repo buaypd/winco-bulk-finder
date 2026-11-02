@@ -145,7 +145,9 @@ export default function BulkMap({ section, position }) {
           fill="red"
           stroke="white"
           strokeWidth="2"
-        />
+        >
+          <title>Approximate product location</title>
+        </circle>
       )}
     </svg>
   );

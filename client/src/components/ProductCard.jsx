@@ -21,7 +21,7 @@ export default function ProductCard({ product }) {
         className="bg-[#DA291C] text-white px-8 py-2 rounded-lg mt-auto hover:bg-[#B82217] transition-colors"
         onClick={() => navigate(`/product/${product.id}`)}
       >
-        Product
+       Find Product
       </button>
     </div>
   );
