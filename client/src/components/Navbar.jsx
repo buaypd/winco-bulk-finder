@@ -12,8 +12,12 @@ export default function Navbar({ query, onQueryChange }) {
   return (
     <header className="border-t-8 border-[#DA291C] bg-white">
       <nav className="mx-auto flex max-w-6xl items-center gap-6 px-4 py-4">
-        <Link to="/" className="shrink-0 font-black italic text-[#DA291C]">
-          WinCo Foods
+        <Link>
+          <img
+            src="/images/winco-logo.png"
+            alt="WinCo Foods — home"
+            className="h-12 w-auto"
+          />
         </Link>
 
         {location.pathname === "/" && (
