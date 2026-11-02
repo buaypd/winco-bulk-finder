@@ -9,17 +9,24 @@ if (error) return <p>Failed to load product data.</p>;
 if (!product) return <p>Product not found.</p>;
   console.log("URL product ID:", id);
   return (
-    <>
-    <Link to="/"> Back to Product</Link>
-    <h2>{product.name}</h2>
+    <div className="mx-auto max-w-4xl px-4 py-6 text-center">
+    <Link
+  to="/"
+  className="mb-4 inline-block text-sm font-medium text-[#DA291C] hover:underline"
+>
+  ← Back to products
+</Link>
+    <h2 className="mb-2 text-2xl font-semibold text-gray-900">{product.name}</h2>
     <p>Category: {product.category}</p>
     <p>Section {product.section}</p>
-    (${product.pricePerPound} / lb)
+    <p className="mt-2 mb-6 text-lg font-semibold text-gray-900">
+  (${product.pricePerPound} / lb)
+</p>
     {product.position === null && (
     <p>Location not yet mapped.</p>
     )}
     <BulkMap section={product.section} position={product.position}/>
     
-    </>
+    </div>
   )
 }
