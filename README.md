@@ -2,6 +2,12 @@
 
 A full-stack web application that helps shoppers search for bulk foods and find their approximate locations on a store map.
 
+## Demo 
+
+https://github.com/user-attachments/assets/58f47f8e-fc4e-4519-aede-ee9bb0c81f61
+
+
+
 ## Why I Built This
 
 As a WinCo employee, I have seen customers struggle to find products in the bulk department and sometimes leave without the items they wanted. Inspired by the product-location feature in Target’s app, I built this project to explore how a searchable catalog and store map could make bulk shopping easier.
