@@ -35,7 +35,7 @@ const { data: products, loading, error } = useFetch("/products", []);
 
   return (
     <div>
-      <h1>Hi Winco Finder</h1>
+      <h1>Winco Foods</h1>
       <Routes>
       <Route path="/" element={
         <>

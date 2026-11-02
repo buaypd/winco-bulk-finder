@@ -12,9 +12,9 @@ if (!product) return <p>Product not found.</p>;
     <>
     <Link to="/"> Back to Product</Link>
     <h2>{product.name}</h2>
-    <p>{product.category}</p>
-    <p>{product.section}</p>
-    <p>{product.pricePerPound}</p>
+    <p>Category: {product.category}</p>
+    <p>Section {product.section}</p>
+    (${product.pricePerPound} / lb)
     {product.position === null && (
     <p>Location not yet mapped.</p>
     )}
