@@ -27,8 +27,13 @@ export default function BulkMap({ section, position }) {
       role="img"
       aria-label="Bulk department map"
     >
-      <text x="300" y="30" textAnchor="middle" fill="currentColor">
-        Sushi Department
+      <text
+        x="300"
+        y="30"
+        textAnchor="middle"
+        className="fill-[#DA291C] text-[24px] font-black italic tracking-wide"
+      >
+        SUSHI DEPT
       </text>
 
       <rect
