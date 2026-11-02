@@ -3,6 +3,7 @@ import "./App.css";
 import ProductList from "./components/ProductList";
 import Search from "./components/Search";
 import ProductInfo from "./pages/ProductInfo";
+import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router";
 import { useFetch } from "./hooks/hooks";
 
@@ -35,11 +36,11 @@ const { data: products, loading, error } = useFetch("/products", []);
 
   return (
     <div>
-      <h1>Winco Foods</h1>
+      <Navbar query={query} onQueryChange={setQuery} />
       <Routes>
       <Route path="/" element={
         <>
-        <Search value={query} onQueryChange={setQuery} />
+        
        {renderResults()}
         </>
         }/>
