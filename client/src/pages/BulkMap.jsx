@@ -30,6 +30,7 @@ export default function BulkMap({ section, position }) {
       <text x="300" y="30" textAnchor="middle" fill="currentColor">
         Sushi Department
       </text>
+
       <rect
         x="100"
         y="70"
@@ -47,12 +48,6 @@ export default function BulkMap({ section, position }) {
         strokeWidth="1"
         opacity="0.4"
       />
-      <text x="300" y="88" textAnchor="middle" fill="currentColor">
-        Section 8
-      </text>
-      <text x="300" y="113" textAnchor="middle" fill="currentColor">
-        Section 7
-      </text>
 
       <rect
         x="100"
@@ -62,12 +57,15 @@ export default function BulkMap({ section, position }) {
         className="fill-neutral-700 stroke-white"
         strokeWidth="2"
       />
-      <text x="300" y="168" textAnchor="middle" fill="currentColor">
-        Section 6
-      </text>
-      <text x="300" y="193" textAnchor="middle" fill="currentColor">
-        Section 5
-      </text>
+      <line
+        x1="100"
+        y1="175"
+        x2="500"
+        y2="175"
+        stroke="white"
+        strokeWidth="1"
+        opacity="0.4"
+      />
 
       <rect
         x="100"
@@ -77,12 +75,15 @@ export default function BulkMap({ section, position }) {
         className="fill-neutral-700 stroke-white"
         strokeWidth="2"
       />
-      <text x="300" y="248" textAnchor="middle" fill="currentColor">
-        Section 4
-      </text>
-      <text x="300" y="273" textAnchor="middle" fill="currentColor">
-        Section 3
-      </text>
+      <line
+        x1="100"
+        y1="255"
+        x2="500"
+        y2="255"
+        stroke="white"
+        strokeWidth="1"
+        opacity="0.4"
+      />
 
       <rect
         x="100"
@@ -92,12 +93,44 @@ export default function BulkMap({ section, position }) {
         className="fill-neutral-700 stroke-white"
         strokeWidth="2"
       />
-      <text x="300" y="328" textAnchor="middle" fill="currentColor">
-        Section 2
-      </text>
-      <text x="300" y="353" textAnchor="middle" fill="currentColor">
-        Section 1
-      </text>
+      <line
+        x1="100"
+        y1="335"
+        x2="500"
+        y2="335"
+        stroke="white"
+        strokeWidth="1"
+        opacity="0.4"
+      />
+      <g textAnchor="end" className="fill-gray-300 text-[10px]">
+        <text x="492" y="88">
+          8
+        </text>
+        <text x="492" y="113">
+          7
+        </text>
+
+        <text x="492" y="168">
+          6
+        </text>
+        <text x="492" y="193">
+          5
+        </text>
+
+        <text x="492" y="248">
+          4
+        </text>
+        <text x="492" y="273">
+          3
+        </text>
+
+        <text x="492" y="328">
+          2
+        </text>
+        <text x="492" y="353">
+          1
+        </text>
+      </g>
 
       {pinX !== undefined && pinY !== undefined && (
         <circle
